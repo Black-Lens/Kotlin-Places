@@ -1,5 +1,7 @@
 package com.blacklenspub.kotlinplaces.data;
 
+import com.blacklenspub.kotlinplaces.data.entity.Place;
+
 import java.util.List;
 
 public interface PlaceDataSource {

@@ -1,6 +1,6 @@
-package com.blacklenspub.kotlinplaces;
+package com.blacklenspub.kotlinplaces.presentation;
 
-import com.blacklenspub.kotlinplaces.data.Place;
+import com.blacklenspub.kotlinplaces.data.entity.Place;
 
 import java.util.ArrayList;
 

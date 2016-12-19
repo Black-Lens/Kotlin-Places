@@ -1,4 +1,4 @@
-package com.blacklenspub.kotlinplaces;
+package com.blacklenspub.kotlinplaces.presentation;
 
 public class PlaceListPresenter {
 

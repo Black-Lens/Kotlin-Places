@@ -1,4 +1,4 @@
-package com.blacklenspub.kotlinplaces;
+package com.blacklenspub.kotlinplaces.presentation;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.blacklenspub.kotlinplaces.data.Place;
+import com.blacklenspub.kotlinplaces.R;
+import com.blacklenspub.kotlinplaces.data.entity.Place;
 
 import java.util.ArrayList;
 
