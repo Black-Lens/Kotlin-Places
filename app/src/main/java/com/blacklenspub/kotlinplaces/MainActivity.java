@@ -1,7 +1,7 @@
 package com.blacklenspub.kotlinplaces;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +14,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements PlaceListViewAction, AdapterView.OnItemSelectedListener {
+
+    private PlaceListPresenter mPresenter;
 
     private Spinner mSpinner;
     private RecyclerView rvPlaces;
@@ -26,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         setupSpinner();
         setupRecyclerView();
+
+        mPresenter = new PlaceListPresenter(this);
+        mPresenter.getPlaceList();
     }
 
     private void setupSpinner() {
@@ -55,8 +61,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // TODO : show all places
     }
 
-    private class Place {
-        public String name;
+    @Override
+    public void setPlaceList(ArrayList<Place> places) {
+        mPlaceAdapter.setPlaces(places);
     }
 
     private class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
@@ -93,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.tvPlaceName.setText(mPlaces.get(position).name);
+            holder.tvPlaceName.setText(mPlaces.get(position).getName());
         }
 
         @Override
