@@ -2,10 +2,10 @@ package com.blacklenspub.kotlinplaces.presentation;
 
 import com.blacklenspub.kotlinplaces.data.entity.Place;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PlaceListViewAction {
 
-    public void setPlaceList(ArrayList<Place> places);
+    public void setPlaceList(List<Place> places);
 
 }

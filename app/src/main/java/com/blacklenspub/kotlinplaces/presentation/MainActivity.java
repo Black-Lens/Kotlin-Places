@@ -12,10 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.blacklenspub.kotlinplaces.Injection;
 import com.blacklenspub.kotlinplaces.R;
 import com.blacklenspub.kotlinplaces.data.entity.Place;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements PlaceListViewAction, AdapterView.OnItemSelectedListener {
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         setupSpinner();
         setupRecyclerView();
 
-        mPresenter = new PlaceListPresenter(this);
+        mPresenter = new PlaceListPresenter(this, Injection.providePlaceDataSource(this));
         mPresenter.getPlaceList();
     }
 
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void setPlaceList(ArrayList<Place> places) {
+    public void setPlaceList(List<Place> places) {
         mPlaceAdapter.setPlaces(places);
     }
 
@@ -82,13 +84,13 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        private ArrayList<Place> mPlaces;
+        private List<Place> mPlaces;
 
-        public PlaceAdapter(ArrayList<Place> places) {
+        public PlaceAdapter(List<Place> places) {
             mPlaces = places;
         }
 
-        public void setPlaces(ArrayList<Place> places) {
+        public void setPlaces(List<Place> places) {
             mPlaces = places;
             notifyDataSetChanged();
         }
