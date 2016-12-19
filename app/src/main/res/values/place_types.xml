@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="places_types">
+        <item>All</item>
+        <item>Hotel</item>
+        <item>Restaurant</item>
+        <item>Shopping</item>
+        <item>Landmark</item>
+    </string-array>
+</resources>
