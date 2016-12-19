@@ -1,4 +1,4 @@
-package com.blacklenspub.kotlinplaces;
+package com.blacklenspub.kotlinplaces.data;
 
 public class Place {
 

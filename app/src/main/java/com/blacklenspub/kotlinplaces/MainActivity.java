@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.blacklenspub.kotlinplaces.data.Place;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
