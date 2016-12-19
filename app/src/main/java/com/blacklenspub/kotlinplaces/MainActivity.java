@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner mSpinner;
@@ -70,13 +72,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
 
-        private Place[] mPlaces;
+        private ArrayList<Place> mPlaces;
 
-        public PlaceAdapter(Place[] places) {
+        public PlaceAdapter(ArrayList<Place> places) {
             mPlaces = places;
         }
 
-        public void setPlaces(Place[] places) {
+        public void setPlaces(ArrayList<Place> places) {
             mPlaces = places;
             notifyDataSetChanged();
         }
@@ -91,13 +93,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.tvPlaceName.setText(mPlaces[position].name);
+            holder.tvPlaceName.setText(mPlaces.get(position).name);
         }
 
         @Override
         public int getItemCount() {
             if (mPlaces != null) {
-                return mPlaces.length;
+                return mPlaces.size();
             } else {
                 return 0;
             }
