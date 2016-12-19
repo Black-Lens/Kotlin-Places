@@ -2,16 +2,21 @@ package com.blacklenspub.kotlinplaces;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner mSpinner;
     private RecyclerView rvPlaces;
+    private PlaceAdapter mPlaceAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void setupRecyclerView() {
         rvPlaces = (RecyclerView) findViewById(R.id.rvPlaces);
+        rvPlaces.setHasFixedSize(true);
+        rvPlaces.setLayoutManager(new LinearLayoutManager(this));
+        mPlaceAdapter = new PlaceAdapter(null);
+        rvPlaces.setAdapter(mPlaceAdapter);
     }
 
     @Override
@@ -42,6 +51,58 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         // TODO : show all places
+    }
+
+    private class Place {
+        public String name;
+    }
+
+    private class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+
+            public TextView tvPlaceName;
+
+            public ViewHolder(View view) {
+                super(view);
+                tvPlaceName = (TextView) view.findViewById(R.id.tvPlaceName);
+            }
+
+        }
+
+        private Place[] mPlaces;
+
+        public PlaceAdapter(Place[] places) {
+            mPlaces = places;
+        }
+
+        public void setPlaces(Place[] places) {
+            mPlaces = places;
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.list_item, parent, false);
+            ViewHolder vh = new ViewHolder(v);
+            return vh;
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            holder.tvPlaceName.setText(mPlaces[position].name);
+        }
+
+        @Override
+        public int getItemCount() {
+            if (mPlaces != null) {
+                return mPlaces.length;
+            } else {
+                return 0;
+            }
+        }
+
     }
 
 }
