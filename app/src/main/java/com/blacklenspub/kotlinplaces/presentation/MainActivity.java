@@ -58,17 +58,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String filter = mFilterAdapter.getItem(i).toString();
-        if (filter.equals("All")) {
-            mPresenter.getAllPlaces();
-        } else if (filter.equals("Hotel")) {
-            mPresenter.getPlacesByType(Place.Type.HOTEL);
-        } else if (filter.equals("Restaurant")) {
-            mPresenter.getPlacesByType(Place.Type.RESTAURANT);
-        } else if (filter.equals("Shopping")) {
-            mPresenter.getPlacesByType(Place.Type.SHOPPING);
-        } else if (filter.equals("Landmark")) {
-            mPresenter.getPlacesByType(Place.Type.LANDMARK);
+        CharSequence filter = mFilterAdapter.getItem(i);
+        if (filter != null) {
+            if (filter.equals("All")) {
+                mPresenter.getAllPlaces();
+            } else if (filter.equals("Hotel")) {
+                mPresenter.getPlacesByType(Place.Type.HOTEL);
+            } else if (filter.equals("Restaurant")) {
+                mPresenter.getPlacesByType(Place.Type.RESTAURANT);
+            } else if (filter.equals("Shopping")) {
+                mPresenter.getPlacesByType(Place.Type.SHOPPING);
+            } else if (filter.equals("Landmark")) {
+                mPresenter.getPlacesByType(Place.Type.LANDMARK);
+            }
         }
     }
 
