@@ -13,12 +13,12 @@ public class MockDataSource implements PlaceDataSource {
         places.add(new Place("Centara Hotel", Place.Type.HOTEL));
         places.add(new Place("Centara Okura", Place.Type.HOTEL));
 
-        places.add(new Place("Bonchon Chicken", Place.Type.RESTURANT));
-        places.add(new Place("KFC", Place.Type.RESTURANT));
-        places.add(new Place("Fuji", Place.Type.RESTURANT));
-        places.add(new Place("Zen", Place.Type.RESTURANT));
-        places.add(new Place("CoCo", Place.Type.RESTURANT));
-        places.add(new Place("After You", Place.Type.RESTURANT));
+        places.add(new Place("Bonchon Chicken", Place.Type.RESTAURANT));
+        places.add(new Place("KFC", Place.Type.RESTAURANT));
+        places.add(new Place("Fuji", Place.Type.RESTAURANT));
+        places.add(new Place("Zen", Place.Type.RESTAURANT));
+        places.add(new Place("CoCo", Place.Type.RESTAURANT));
+        places.add(new Place("After You", Place.Type.RESTAURANT));
 
         places.add(new Place("Siam Paragon", Place.Type.SHOPPING));
         places.add(new Place("Siam Center", Place.Type.SHOPPING));

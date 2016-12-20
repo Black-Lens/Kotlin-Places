@@ -3,7 +3,7 @@ package com.blacklenspub.kotlinplaces.data.entity;
 public class Place {
 
     public enum Type {
-        HOTEL, RESTURANT, SHOPPING, LANDMARK
+        HOTEL, RESTAURANT, SHOPPING, LANDMARK
     }
 
     private String name;
