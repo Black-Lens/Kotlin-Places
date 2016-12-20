@@ -2,12 +2,17 @@ package com.blacklenspub.kotlinplaces.data.entity;
 
 public class Place {
 
-    enum Type {
+    public enum Type {
         HOTEL, RESTURANT, SHOPPING, LANDMARK
     }
 
     private String name;
     private Type type;
+
+    public Place(String name, Type type) {
+        this.name = name;
+        this.type = type;
+    }
 
     public String getName() {
         return name;

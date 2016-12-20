@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PlaceListViewAction {
 
-    public void setPlaceList(List<Place> places);
+    void setPlaceList(List<Place> places);
 
 }

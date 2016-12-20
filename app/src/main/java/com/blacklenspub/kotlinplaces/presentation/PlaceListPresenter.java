@@ -10,7 +10,6 @@ public class PlaceListPresenter {
     private PlaceListViewAction mViewAction;
     private PlaceDataSource mDataSource;
 
-    // TODO : get repo
     public PlaceListPresenter(PlaceListViewAction viewAction,
                               PlaceDataSource dataSource) {
         mViewAction = viewAction;
@@ -18,7 +17,6 @@ public class PlaceListPresenter {
     }
 
     public void getPlaceList() {
-        // TODO : get place list from repo then return to ViewAction
         mDataSource.getPlaceList(new PlaceDataSource.LoadPlaceListCallback() {
 
             @Override

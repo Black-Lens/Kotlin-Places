@@ -16,7 +16,6 @@ import com.blacklenspub.kotlinplaces.Injection;
 import com.blacklenspub.kotlinplaces.R;
 import com.blacklenspub.kotlinplaces.data.entity.Place;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity
 
     private PlaceListPresenter mPresenter;
 
-    private Spinner mSpinner;
+    private Spinner spPlaceTypes;
     private RecyclerView rvPlaces;
     private PlaceAdapter mPlaceAdapter;
 
@@ -43,9 +42,9 @@ public class MainActivity extends AppCompatActivity
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.places_types, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner = (Spinner) findViewById(R.id.spPlaceType);
-        mSpinner.setAdapter(adapter);
-        mSpinner.setOnItemSelectedListener(this);
+        spPlaceTypes = (Spinner) findViewById(R.id.spPlaceType);
+        spPlaceTypes.setAdapter(adapter);
+        spPlaceTypes.setOnItemSelectedListener(this);
     }
 
     private void setupRecyclerView() {
