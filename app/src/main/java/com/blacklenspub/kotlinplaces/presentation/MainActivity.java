@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private Spinner spPlaceTypes;
     private RecyclerView rvPlaces;
     private PlaceAdapter mPlaceAdapter;
+    private ArrayAdapter<CharSequence> mFilterAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +35,16 @@ public class MainActivity extends AppCompatActivity
         setupSpinner();
         setupRecyclerView();
 
-        mPresenter = new PlaceListPresenter(this, Injection.providePlaceDataSource(this));
-        mPresenter.getPlaceList();
+        mPresenter = new PlaceListPresenter(this, Injection.providePlaceDataSource());
+        mPresenter.getAllPlaces();
     }
 
     private void setupSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        mFilterAdapter = ArrayAdapter.createFromResource(this,
                 R.array.places_types, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mFilterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spPlaceTypes = (Spinner) findViewById(R.id.spPlaceType);
-        spPlaceTypes.setAdapter(adapter);
+        spPlaceTypes.setAdapter(mFilterAdapter);
         spPlaceTypes.setOnItemSelectedListener(this);
     }
 
@@ -57,7 +58,18 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        // TODO : refresh filter
+        String filter = mFilterAdapter.getItem(i).toString();
+        if (filter.equals("All")) {
+            mPresenter.getAllPlaces();
+        } else if (filter.equals("Hotel")) {
+            mPresenter.getPlacesByType(Place.Type.HOTEL);
+        } else if (filter.equals("Restaurant")) {
+            mPresenter.getPlacesByType(Place.Type.RESTAURANT);
+        } else if (filter.equals("Shopping")) {
+            mPresenter.getPlacesByType(Place.Type.SHOPPING);
+        } else if (filter.equals("Landmark")) {
+            mPresenter.getPlacesByType(Place.Type.LANDMARK);
+        }
     }
 
     @Override
